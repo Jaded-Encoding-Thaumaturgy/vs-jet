@@ -1,1 +1,1 @@
-from .init import update
+from .init import update  # noqa: F401
