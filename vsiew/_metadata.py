@@ -1,9 +1,9 @@
-"""VapourSynth from Irrational Encoding Wizardry"""
+"""VapourSynth packages from Irrational Encoding Wizardry"""
 
 __version__ = '1.0.0'
 
-__author__ = 'Setsugen no ao <setsugen@setsugen.dev>'
-__maintainer__ = __author__
+__author__ = 'Irrational Encoding Wizardry <wizards@encode.moe>'
+__maintainer__ = 'Setsugen no ao <setsugen@setsugen.dev>'
 
 __author_name__, __author_email__ = [x[:-1] for x in __author__.split('<')]
 __maintainer_name__, __maintainer_email__ = [x[:-1] for x in __maintainer__.split('<')]
