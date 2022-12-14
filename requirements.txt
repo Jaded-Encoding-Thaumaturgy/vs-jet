@@ -1,8 +1,8 @@
 VapourSynth>=60
-vstools==1.6.8
-vspyplugin==1.2.1
+vstools==1.6.9
+vspyplugin==1.2.2
 vskernels==2.2.3
-vsexprtools==1.2.7
+vsexprtools==1.2.8
 vsrgtools==1.3.4
 vsmask==0.5.1
 vsaa==1.4.3
