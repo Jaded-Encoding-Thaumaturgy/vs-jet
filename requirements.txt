@@ -14,4 +14,4 @@ vsdeinterlace==0.3.1
 lvsfunc==0.6.0
 vsdfft==1.0.0
 vsparsedvd==0.1.0
-vspreview==0.4.0
+vspreview==0.3.9
