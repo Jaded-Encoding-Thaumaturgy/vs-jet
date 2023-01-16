@@ -4,7 +4,7 @@ vspyplugin==1.2.4
 vskernels==2.2.4
 vsexprtools==1.3.2
 vsrgtools==1.3.5
-vsmasktools==0.8.1
+vsmasktools==0.8.2
 vsaa==1.5.1
 vsscale==1.5.0
 vsdenoise==1.2.0
