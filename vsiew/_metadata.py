@@ -1,6 +1,6 @@
 """VapourSynth packages from Irrational Encoding Wizardry"""
 
-__version__ = '1.4.9'
+__version__ = '1.5.0'
 
 __author__ = 'Irrational Encoding Wizardry <wizards@encode.moe>'
 __maintainer__ = 'Setsugen no ao <setsugen@setsugen.dev>'
