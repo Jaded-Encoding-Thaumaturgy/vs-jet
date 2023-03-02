@@ -8,7 +8,7 @@ vsmasktools==0.9.1
 vsaa==1.6.1
 vsscale==1.7.1
 vsdenoise==2.1.1
-vsdehalo==1.6.0
+vsdehalo==1.6.1
 vsdeband==0.9.1
 vsdeinterlace==0.4.0
 lvsfunc==0.7.0
