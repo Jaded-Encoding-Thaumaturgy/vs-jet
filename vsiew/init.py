@@ -9,11 +9,14 @@ def update(latest_git: bool = False) -> None:
     from http.client import HTTPSConnection
 
     def _get_call(package: str, do_git: bool) -> int:
+        args = list[str]()
+
         if do_git:
             package = f'git+https://github.com/{base_org}/{package}.git'
+            args.extend(['--force', '--no-deps'])
 
         try:
-            return check_call([sys.executable, '-m', 'pip', 'install', package, '-U', '--no-cache-dir'])
+            return check_call([sys.executable, '-m', 'pip', 'install', package, '-U', '--no-cache-dir', *args])
         except Exception:
             return 1
 
