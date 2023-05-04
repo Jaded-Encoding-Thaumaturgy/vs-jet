@@ -1,14 +1,16 @@
 # Shrimply
 
+from typing import Iterator
+
 base_org = 'Irrational-Encoding-Wizardry'
 
 
-def update(latest_git: bool = False) -> None:
+def update(action: str) -> None:
     import sys
-    from subprocess import check_call
-    from http.client import HTTPSConnection
 
-    def _get_call(package: str, do_git: bool) -> int:
+    def _get_install_call(package: str, do_git: bool) -> int:
+        from subprocess import check_call
+
         args = list[str]()
 
         if do_git:
@@ -16,40 +18,84 @@ def update(latest_git: bool = False) -> None:
             args.extend(['--force', '--no-deps'])
 
         try:
-            return check_call([sys.executable, '-m', 'pip', 'install', package, '-U', '--no-cache-dir', *args])
+            return check_call([
+                sys.executable, '-m', 'pip', 'install',
+                package, '-U', '--no-cache-dir', *args
+            ])
         except Exception:
             return 1
 
-    if latest_git:
-        err = 0
+    def _get_uninstall_call(package: str) -> int:
+        from subprocess import check_call
+
+        try:
+            return check_call([
+                sys.executable, '-m', 'pip', 'uninstall', package
+            ])
+        except Exception:
+            return 1
+
+    def _get_iew_packages() -> Iterator[tuple[str, str]]:
+        from http.client import HTTPSConnection
 
         conn = HTTPSConnection('raw.githubusercontent.com', 443)
-        conn.request('GET', f'https://raw.githubusercontent.com/{base_org}/vs-iew/master/requirements.txt')
+        conn.request(
+            'GET', f'https://raw.githubusercontent.com/{base_org}'
+            '/vs-iew/master/requirements.txt'
+        )
 
         res = conn.getresponse()
 
-        packages = [line.decode('utf-8').strip() for line in res.readlines() if b'#' in line]
+        for line in res.readlines():
+            if b'#' in line:
+                line_s = line.decode('utf-8').strip()
 
-        for package in packages:
-            *_, package = package.split('# ')
+                *left, pypi_package = line_s.split('# ')
+                package = left[0].split('=')[0]
 
-            if _get_call(package, True):
+                yield (package, pypi_package)
+
+    err = color = 0
+    message = default_message = 'No error message specified'
+
+    def _set_message(
+        message_succ: str = default_message, message_err: str = default_message
+    ) -> None:
+        nonlocal color, message, err
+        color = 31 if err else 32
+        message = (message_err if err else message_succ).format(err=err)
+
+    if action == 'update':
+        err = _get_install_call('vs-iew', True)
+
+        if err:
+            err = _get_install_call('vsiew', False)
+
+        _set_message(
+            'Successfully updated IEW packages!',
+            'There was an error updating IEW packages!'
+        )
+    elif action == 'update-git':
+        for _, name in _get_iew_packages():
+            if _get_install_call(name, True):
                 err += 1
 
-        if err:
-            color, message = 31, f'There was an error updating ({err}) IEW packages to latest git!'
-        else:
-            color, message = 32, 'Successfully updated all IEW packages to latest git!'
+        _set_message(
+            'Successfully updated all IEW packages to latest git!',
+            'There was an error updating ({err}) IEW packages to latest git!'
+        )
+    elif action == 'uninstall':
+        for name, _ in reversed(list(_get_iew_packages())):
+            if _get_uninstall_call(name):
+                err += 1
+
+        _set_message(
+            'Successfully uninstalled all IEW packages!',
+            'There was an error uninstalling ({err}) IEW packages!'
+        )
     else:
-        err = _get_call('vs-iew', True)
-
-        if err:
-            err = _get_call('vsiew')
-
-        if err:
-            color, message = 31, 'There was an error updating IEW packages!'
-        else:
-            color, message = 32, 'Successfully updated IEW packages!'
+        err = 1
+        _set_message(message_err=f'There\'s no action called "{action}"!')
 
     if sys.stdout and sys.stdout.isatty():
         message = f'\033[0;{color};1m{message}\033[0m'
