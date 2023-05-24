@@ -11,7 +11,7 @@ __all__ = [
     'dehalo',
     'deband',
     'deint',
-    'parsedvd',
+    'source',
 
     'vs', 'core'
 ]
@@ -24,7 +24,7 @@ import vsdenoise as denoise
 import vsexprtools as exprs
 import vskernels as kernels
 import vsmasktools as masks
-import vsparsedvd as parsedvd
+import vssource as source
 import vsrgtools as rg
 import vsscale as scale
 import vstools as tools
