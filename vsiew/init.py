@@ -5,8 +5,16 @@ from typing import Iterator
 base_org = 'Irrational-Encoding-Wizardry'
 
 
-def update(action: str) -> None:
+def update(action_: list[str] | None) -> None:
     import sys
+
+    action = 'update'
+
+    if action_:
+        if action_[-1] == 'latest':
+            action = 'update-git'
+        elif 'Scripts' not in action_[-1] or '.py' not in action_[-1]:
+            action = action_[-1].strip()
 
     def _get_install_call(package: str, do_git: bool) -> int:
         from subprocess import check_call
