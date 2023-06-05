@@ -1,0 +1,4 @@
+dist
+*.pyc
+vsiew.egg-info
+build
