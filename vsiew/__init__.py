@@ -1,7 +1,8 @@
 # flake8: noqa
 
-import sys
 import inspect
+import sys
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 update_check = False
@@ -54,6 +55,8 @@ while (t := c_frame[-1] and c_frame[-1].f_back):
     ):
         update_check = True
         break
+else:
+    update_check = len(sys.argv) > 0 and (Path(sys.executable).parent / 'Scripts') in Path(sys.argv[0]).parents
 
 
 if update_check:
