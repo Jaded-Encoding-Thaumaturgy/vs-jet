@@ -13,4 +13,4 @@ vsdeband==1.0.1 # vs-deband
 vsdeinterlace==0.5.1 # vs-deinterlace
 lvsfunc==0.8.0 # lvsfunc
 vssource==0.9.3 # vs-source
-vspreview==0.5.0 # vs-preview
+vspreview==0.6.0 # vs-preview
