@@ -84,8 +84,12 @@ def update(action_: list[str] | None) -> None:
             'There was an error updating IEW packages!'
         )
     elif action == 'update-git':
-        for _, name in _get_iew_packages():
-            if _get_install_call(name, True):
+        packages = list(_get_iew_packages())
+        for name, _ in reversed(packages):
+            _get_uninstall_call(name)
+
+        for _, repo_name in packages:
+            if _get_install_call(repo_name, True):
                 err += 1
 
         _set_message(
