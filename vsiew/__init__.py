@@ -56,7 +56,26 @@ while (t := c_frame[-1] and c_frame[-1].f_back):
         update_check = True
         break
 else:
-    update_check = len(sys.argv) > 0 and (Path(sys.executable).parent / 'Scripts') in Path(sys.argv[0]).parents
+    import site
+
+    parents = Path(sys.argv[0]).parents
+
+    update_check = False
+
+    if len(sys.argv) > 0:
+        for folder in [
+            Path(site_pack) for site_pack in (
+                *site.getsitepackages(),
+                site.getusersitepackages()
+            ) if 'site-packages' in site_pack
+        ]:
+            if (
+                folder in parents and 'Lib' not in folder.parts
+            ) or any(
+                x / 'Scripts' for x in (folder.parent.parent, folder.parent)
+            ):
+                update_check = True
+                break
 
 
 if update_check:
