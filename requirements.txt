@@ -12,5 +12,5 @@ vsdehalo>=1.7.2 # vs-dehalo
 vsdeband>=1.0.2 # vs-deband
 vsdeinterlace>=0.5.1 # vs-deinterlace
 lvsfunc>=0.8.0 # v-lvsfunc
-vssource>=0.9.4 # vs-source
+vssource>=0.9.5 # vs-source
 vspreview>=0.7.0 # vs-preview
