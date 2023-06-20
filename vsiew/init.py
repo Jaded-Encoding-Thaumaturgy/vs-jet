@@ -74,10 +74,13 @@ def update(action_: list[str] | None) -> None:
         message = (message_err if err else message_succ).format(err=err)
 
     if action == 'update':
-        err = _get_install_call('vs-iew', True)
+        packages = list(_get_iew_packages())
+        for name, _ in reversed(packages):
+            _get_uninstall_call(name)
 
-        if err:
-            err = _get_install_call('vsiew', False)
+        for _, repo_name in packages:
+            if _get_install_call(repo_name, False):
+                err += 1
 
         _set_message(
             'Successfully updated IEW packages!',
