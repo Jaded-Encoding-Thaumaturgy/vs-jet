@@ -78,7 +78,7 @@ def update(action_: list[str] | None) -> None:
         for name, _ in reversed(packages):
             _get_uninstall_call(name)
 
-        for _, repo_name in packages:
+        for name, _ in packages:
             if _get_install_call(repo_name, False):
                 err += 1
 
