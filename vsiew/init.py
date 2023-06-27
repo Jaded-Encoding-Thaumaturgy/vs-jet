@@ -38,7 +38,7 @@ def update(action_: list[str] | None) -> None:
 
         try:
             return check_call([
-                sys.executable, '-m', 'pip', 'uninstall', package
+                sys.executable, '-m', 'pip', 'uninstall', package, '-y'
             ])
         except Exception:
             return 1
