@@ -1,29 +1,29 @@
-# vs-iew
+# vs-stg
 
-### PyPi package for quickly updating and installing all IEW packages.
+### PyPi package for quickly updating and installing all my packages.
 
 <br>
 
 <br><br>
 ## How to install
 
-Install `vsiew` with the following command:
+Install `vsstg` with the following command:
 
 ```sh
-pip install vsiew
+pip install vsstg
 ```
 
 <br>
 
 ## How to use
 
-Install all iew packages:
+Install all my packages:
 ```sh
-python -m vsiew
+python -m vsstg
 ```
 
-Install latest git version of all iew packages:
+Install latest git version of all my packages:
 ```sh
-python -m vsiew latest
+python -m vsstg latest
 ```
 

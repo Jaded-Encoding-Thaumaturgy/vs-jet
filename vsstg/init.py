@@ -2,7 +2,7 @@
 
 from typing import Iterator
 
-base_org = 'Irrational-Encoding-Wizardry'
+base_user = 'Setsugennoao'
 
 
 def update(action_: list[str] | None) -> None:
@@ -22,7 +22,7 @@ def update(action_: list[str] | None) -> None:
         args = list[str]()
 
         if do_git:
-            package = f'git+https://github.com/{base_org}/{package}.git'
+            package = f'git+https://github.com/{base_user}/{package}.git'
             args.extend(['--force', '--no-deps'])
 
         try:
@@ -48,8 +48,8 @@ def update(action_: list[str] | None) -> None:
 
         conn = HTTPSConnection('raw.githubusercontent.com', 443)
         conn.request(
-            'GET', f'https://raw.githubusercontent.com/{base_org}'
-            '/vs-iew/master/requirements.txt'
+            'GET', f'https://raw.githubusercontent.com/{base_user}'
+            '/vs-stg/master/requirements.txt'
         )
 
         res = conn.getresponse()
@@ -83,8 +83,8 @@ def update(action_: list[str] | None) -> None:
                 err += 1
 
         _set_message(
-            'Successfully updated IEW packages!',
-            'There was an error updating IEW packages!'
+            'Successfully updated all packages!',
+            'There was an error updating all packages!'
         )
     elif action == 'update-git':
         packages = list(_get_iew_packages())
@@ -96,8 +96,8 @@ def update(action_: list[str] | None) -> None:
                 err += 1
 
         _set_message(
-            'Successfully updated all IEW packages to latest git!',
-            'There was an error updating ({err}) IEW packages to latest git!'
+            'Successfully updated all packages to latest git!',
+            'There was an error updating ({err}) packages to latest git!'
         )
     elif action == 'uninstall':
         for name, _ in reversed(list(_get_iew_packages())):
@@ -105,8 +105,8 @@ def update(action_: list[str] | None) -> None:
                 err += 1
 
         _set_message(
-            'Successfully uninstalled all IEW packages!',
-            'There was an error uninstalling ({err}) IEW packages!'
+            'Successfully uninstalled all packages!',
+            'There was an error uninstalling ({err}) packages!'
         )
     else:
         err = 1

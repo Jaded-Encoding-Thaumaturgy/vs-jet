@@ -3,7 +3,7 @@
 import setuptools
 from pathlib import Path
 
-package_name = 'vsiew'
+package_name = 'vsstg'
 
 exec(Path(f'{package_name}/_metadata.py').read_text(), meta := dict[str, str]())
 
@@ -22,8 +22,8 @@ setuptools.setup(
     long_description=readme,
     long_description_content_type='text/markdown',
     project_urls={
-        'Source Code': 'https://github.com/Irrational-Encoding-Wizardry',
-        'Contact': 'https://discord.gg/qxTxVJGtst',
+        'Source Code': 'https://github.com/Setsugennoao',
+        'Contact': 'https://discord.gg/setsugen',
     },
     install_requires=requirements,
     python_requires='>=3.11',
@@ -34,7 +34,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'vsiew=vsiew:update_packages'
+            'vsstg=vsstg:update_packages'
         ]
     },
 )
