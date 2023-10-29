@@ -1,6 +1,6 @@
 """VapourSynth packages from Setsugennoao"""
 
-__version__ = '2.3.8'
+__version__ = '3.0.0'
 
 __author_name__, __author_email__ = 'Irrational Encoding Wizardry', 'wizards@encode.moe'
 __maintainer_name__, __maintainer_email__ = 'Setsugen no ao', 'setsugen@setsugen.dev'
