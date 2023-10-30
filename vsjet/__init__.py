@@ -49,9 +49,9 @@ while (t := c_frame[-1] and c_frame[-1].f_back):
 
     if (
         'self' in t.f_locals and type(t.f_locals['self']).__name__ == 'EntryPoint'
-        and t.f_locals['self'].value == 'vsiew:update_packages'
+        and t.f_locals['self'].value == 'vsjet:update_packages'
     ) or (
-        'pkg_main_name' in t.f_locals and t.f_locals['pkg_main_name'] == 'vsiew.__main__'
+        'pkg_main_name' in t.f_locals and t.f_locals['pkg_main_name'] == 'vsjet.__main__'
     ):
         update_check = True
         break
@@ -81,7 +81,7 @@ else:
 if update_check:
     __all__.append('update_packages')
 
-    # vsiew
+    # vsjet
     def update_packages() -> None:
         from .init import update
         update(sys.argv[1:] if sys.argv else None)

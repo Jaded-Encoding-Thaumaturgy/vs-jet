@@ -1,29 +1,31 @@
-# vs-iew
+# vs-jet
 
-### PyPi package for quickly updating and installing all IEW packages.
+### PyPi package for quickly updating and installing all JET packages.
 
 <br>
 
 <br><br>
+
 ## How to install
 
-Install `vsiew` with the following command:
+Install `vsjet` with the following command:
 
 ```sh
-pip install vsiew
+pip install vsjet
 ```
 
 <br>
 
 ## How to use
 
-Install all iew packages:
+Install all jet packages:
+
 ```sh
-python -m vsiew
+python -m vsjet
 ```
 
-Install latest git version of all iew packages:
-```sh
-python -m vsiew latest
-```
+Install latest git version of all JET packages:
 
+```sh
+python -m vsjet latest
+```
