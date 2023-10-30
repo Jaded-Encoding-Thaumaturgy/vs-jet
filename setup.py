@@ -23,7 +23,7 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     project_urls={
         'Source Code': 'https://github.com/Jaded-Encoding-Thaumaturgy',
-        'Contact': 'https://discord.gg/setsugen',
+        'Contact': 'https://discord.gg/XTpc6Fa9eB',
     },
     install_requires=requirements,
     python_requires='>=3.11',
