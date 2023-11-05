@@ -1,12 +1,13 @@
 # Shrimply
 
-from typing import Iterator
-
 base_user = 'Jaded-Encoding-Thaumaturgy'
 
 
 def update(action_: list[str] | None) -> None:
+    import re
     import sys
+    from subprocess import PIPE, Popen
+    from typing import Iterator
 
     action = 'update'
 
@@ -63,7 +64,42 @@ def update(action_: list[str] | None) -> None:
 
                 yield (package, pypi_package)
 
-    err = color = 0
+    def _fix_own_dependencies() -> int:
+        err = 0
+
+        process = Popen([sys.executable, '-m', 'pip', 'check'], encoding='utf8', stdout=PIPE)
+        process.wait()
+
+        if not process.stdout:
+            return err
+
+        regex = re.compile(r"(.+)\s[\d.]+\shas requirement\s(.+),")
+
+        deps_to_fix = set[str]()
+
+        for package_err in process.stdout.readlines():
+            package_match = regex.match(package_err)
+
+            if not package_match:
+                continue
+
+            pack_err, pack_good = package_match[1], package_match[2]
+
+            for (package, _) in packages:
+                if package.lower() == pack_err.lower():
+                    break
+            else:
+                continue
+
+            deps_to_fix.add(pack_good)
+
+        for dep in deps_to_fix:
+            if _get_install_call(dep, False):
+                err += 1
+
+        return err
+
+    err = deps_err = color = 0
     message = default_message = 'No error message specified'
 
     def _set_message(
@@ -72,6 +108,8 @@ def update(action_: list[str] | None) -> None:
         nonlocal color, message, err
         color = 31 if err else 32
         message = (message_err if err else message_succ).format(err=err)
+        if deps_err:
+            message += f'\n\tThere were {deps_err} errors installing dependencies! Run `pip check` for more info.'
 
     if action == 'update':
         packages = list(_get_jet_packages())
@@ -94,6 +132,8 @@ def update(action_: list[str] | None) -> None:
         for _, repo_name in packages:
             if _get_install_call(repo_name, True):
                 err += 1
+
+        deps_err = _fix_own_dependencies()
 
         _set_message(
             'Successfully updated all packages to latest git!',
