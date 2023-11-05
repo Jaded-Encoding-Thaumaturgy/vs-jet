@@ -24,7 +24,7 @@ def update(action_: list[str] | None) -> None:
 
         if do_git:
             package = f'git+https://github.com/{base_user}/{package}.git'
-            args.extend(['--force', '--no-deps'])
+            args.extend(['--force', '--no-deps', '--use-pep517'])
 
         try:
             return check_call([
