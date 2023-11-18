@@ -11,5 +11,5 @@ vsdenoise==2.5.1 # vs-denoise
 vsdehalo==1.8.1 # vs-dehalo
 vsdeband==1.1.1 # vs-deband
 vsdeinterlace==0.6.1 # vs-deinterlace
-vssource==0.9.7 # vs-source
+vssource==0.10.1 # vs-source
 vspreview==0.8.1 # vs-preview
