@@ -1,7 +1,7 @@
 VapourSynth>=65
-vstools==3.0.1 # vs-tools
+vstools==3.1.0 # vs-tools
 vspyplugin==1.4.1 # vs-pyplugin
-vskernels==3.0.2 # vs-kernels
+vskernels==3.1.0 # vs-kernels
 vsexprtools==1.5.1 # vs-exprtools
 vsrgtools==1.6.2 # vs-rgtools
 vsmasktools==1.2.1 # vs-masktools
