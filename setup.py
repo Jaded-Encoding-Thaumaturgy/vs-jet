@@ -26,7 +26,7 @@ setuptools.setup(
         'Contact': 'https://discord.gg/XTpc6Fa9eB',
     },
     install_requires=requirements,
-    python_requires='>=3.11',
+    python_requires='>=3.12',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
