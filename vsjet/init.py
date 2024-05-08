@@ -6,8 +6,12 @@ base_user = 'Jaded-Encoding-Thaumaturgy'
 def update(action_: list[str] | None) -> None:
     import re
     import sys
+    from shutil import which
     from subprocess import PIPE, Popen
     from typing import Iterator
+
+    if not which('git'):
+        raise ImportError('Git is not installed! Please install git before you continue.')
 
     action = 'update'
 
