@@ -49,15 +49,9 @@ def update(action_: list[str] | None) -> None:
             return 1
 
     def _get_jet_packages() -> Iterator[tuple[str, str]]:
-        from http.client import HTTPSConnection
+        from urllib.request import urlopen
 
-        conn = HTTPSConnection('raw.githubusercontent.com', 443)
-        conn.request(
-            'GET', f'https://raw.githubusercontent.com/{base_user}'
-            '/vs-jet/master/requirements.txt'
-        )
-
-        res = conn.getresponse()
+        res = urlopen(f'https://raw.githubusercontent.com/{base_user}/vs-jet/master/requirements.txt')
 
         for line in res.readlines():
             if b'#' in line:
