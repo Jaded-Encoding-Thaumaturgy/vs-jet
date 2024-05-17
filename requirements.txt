@@ -1,4 +1,4 @@
-VapourSynth>=65
+VapourSynth>=68
 vstools==3.1.0 # vs-tools
 vspyplugin==1.4.1 # vs-pyplugin
 vskernels==3.1.0 # vs-kernels
