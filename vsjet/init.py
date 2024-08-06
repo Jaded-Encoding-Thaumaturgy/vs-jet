@@ -27,7 +27,8 @@ def update(action_: list[str] | None) -> None:
         args = list[str]()
 
         if do_git:
-            package = f'git+https://github.com/{base_user}/{package}.git'
+            github_path = package if '/' in package else f'{base_user}/{package}'
+            package = f'git+https://github.com/{github_path}.git'
             args.extend(['--force', '--no-deps', '--use-pep517'])
 
         try:
