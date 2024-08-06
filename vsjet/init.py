@@ -30,6 +30,8 @@ def update(action_: list[str] | None) -> None:
             github_path = package if '/' in package else f'{base_user}/{package}'
             package = f'git+https://github.com/{github_path}.git'
             args.extend(['--force', '--no-deps', '--use-pep517'])
+        elif '/' in package:
+            return 0
 
         try:
             return check_call([
