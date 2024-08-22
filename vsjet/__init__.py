@@ -77,6 +77,7 @@ else:
                 update_check = True
                 break
 
+c_frame.clear()
 
 if update_check:
     __all__.append('update_packages')
