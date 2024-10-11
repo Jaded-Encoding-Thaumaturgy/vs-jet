@@ -60,8 +60,8 @@ def update(action_: list[str] | None) -> None:
             if b'#' in line:
                 line_s = line.decode('utf-8').strip()
 
-                *left, pypi_package = line_s.split('# ')
-                package = left[0].split('=')[0]
+                package, _, pypi_package = line_s.partition('# ')
+                package = package.split('=')[0].rstrip('>')
 
                 yield (package, pypi_package)
 
