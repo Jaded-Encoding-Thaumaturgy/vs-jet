@@ -61,7 +61,7 @@ def update(action_: list[str] | None) -> None:
                 line_s = line.decode('utf-8').strip()
 
                 package, _, pypi_package = line_s.partition('# ')
-                package = package.split('=')[0].rstrip('>')
+                package = package.split('=')[0].strip('<>')
 
                 yield (package, pypi_package)
 
