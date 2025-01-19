@@ -6,7 +6,7 @@ vskernels==3.3.1 # vs-kernels
 vsexprtools==1.7.1 # vs-exprtools
 vsrgtools==1.8.1 # vs-rgtools
 vsmasktools==1.3.2 # vs-masktools
-vsaa==1.11.1 # vs-aa
+vsaa==1.11.2 # vs-aa
 vsscale==2.2.1 # vs-scale
 vsdenoise==2.7.1 # vs-denoise
 vsdehalo==1.9.2 # vs-dehalo
