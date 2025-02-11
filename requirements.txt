@@ -1,6 +1,6 @@
 VapourSynth>=68
 stgpytools>=1.2.2 # Setsugennoao/stgpytools
-vstools==3.4.1 # vs-tools
+vstools==3.4.3 # vs-tools
 vspyplugin==1.4.3 # vs-pyplugin
 vskernels==3.4.2 # vs-kernels
 vsexprtools==1.8.1 # vs-exprtools
